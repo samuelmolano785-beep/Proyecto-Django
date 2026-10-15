@@ -87,8 +87,15 @@ def articulos(request):
 
     articulos = Article.objects.all()
 
-   articulos = Article.objects.filter(title="Matrix", id=4   
+    articulos = Article.objects.filter(title__contains="articulo" )
 
+    articulos = Article.objects.filter(
+                                title = "Articulo", 
+                                ).exclude(
+                                    public=True
+                                )
+    articulos = Article.objects.raw("SELECT * FROM miapp_article WHERE title='Articulo' AND public=0")
+    
     return render(request, 'articulos.html', {
         'articulos': articulos
     })
@@ -97,4 +104,5 @@ def articulos(request):
 def borrar_articulo(request, id): 
     articulo = Article.objects.get(pk=id)
     articulo.delete()
+
     return redirect('articulos')

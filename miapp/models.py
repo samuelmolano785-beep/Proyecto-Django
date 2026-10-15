@@ -7,7 +7,7 @@ class Article(models.Model):
     content = models.TextField()
     image = models.ImageField(default='null')
     public =models.BooleanField()
-    created_ad = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
 class Category(models.Model):
