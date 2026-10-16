@@ -17,8 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+
 # Importar app com mis vistas
 from miapp import views
+
+import pages.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,4 +38,6 @@ urlpatterns = [
     path('editar-articulo/<int:id>/', views.editar_articulo, name="editar_articulo"),
     path('articulos/', views.articulos, name="articulos"),
     path('borrar-articulo/<int:id>/', views.borrar_articulo, name="borrar_articulo"),
+
+      path('pagina/<str:slug>/', pages.views.page, name="page"),
 ]
