@@ -1,3 +1,9 @@
 from django.shortcuts import render
+from blog.models import Category, Article
 
-# Create your views here.
+def list(request):
+    articulos = Article.objects.all()
+    return render(request, 'articles/list.html', {
+        'title': "Articulos"
+        'articles': articles
+    })
